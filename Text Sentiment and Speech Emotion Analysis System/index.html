@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentioAI | Text & Speech Emotion Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <span>Sentio<span class="logo-highlight">AI</span></span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="nav-button" onclick="scrollToAnalyzer()">
+            Start Analysis
+        </button>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ AI-Powered Emotion Intelligence
+            </div>
+
+            <h1>
+                Understand
+                <span>Human Emotions</span>
+                Through Words & Voice
+            </h1>
+
+            <p>
+                Analyze text sentiment and speech emotions using an intelligent
+                analysis platform designed to transform human communication
+                into meaningful insights.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn" onclick="scrollToAnalyzer()">
+                    Analyze Now
+                    <span>→</span>
+                </button>
+
+                <button class="secondary-btn" onclick="showDemo()">
+                    ▶ See How It Works
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>2</strong>
+                    <span>Analysis Modes</span>
+                </div>
+
+                <div>
+                    <strong>8+</strong>
+                    <span>Emotion Types</span>
+                </div>
+
+                <div>
+                    <strong>AI</strong>
+                    <span>Powered Insights</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO CARD -->
+        <div class="hero-visual">
+
+            <div class="analysis-card">
+
+                <div class="card-header">
+                    <div>
+                        <small>LIVE ANALYSIS</small>
+                        <h3>Emotion Intelligence</h3>
+                    </div>
+
+                    <div class="status-dot"></div>
+                </div>
+
+                <div class="emotion-circle">
+                    <div class="circle-inner">
+                        <span>87%</span>
+                        <small>Confidence</small>
+                    </div>
+                </div>
+
+                <div class="emotion-result">
+                    <span class="emotion-icon">😊</span>
+
+                    <div>
+                        <small>Detected Emotion</small>
+                        <h3>Happy</h3>
+                    </div>
+
+                    <strong>87%</strong>
+                </div>
+
+                <div class="mini-bars">
+
+                    <div>
+                        <span>Happy</span>
+                        <div class="bar">
+                            <i style="width:87%"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>Neutral</span>
+                        <div class="bar">
+                            <i style="width:38%"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>Sad</span>
+                        <div class="bar">
+                            <i style="width:15%"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYZER -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                ANALYSIS CENTER
+            </div>
+
+            <h2>
+                Analyze Your
+                <span>Communication</span>
+            </h2>
+
+            <p>
+                Choose an analysis method and discover the emotional meaning
+                behind your words or voice.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-container">
+
+            <!-- TEXT ANALYSIS -->
+            <div class="analyzer-card">
+
+                <div class="analyzer-title">
+
+                    <div class="analyzer-icon text-icon">
+                        Aa
+                    </div>
+
+                    <div>
+                        <h3>Text Sentiment Analysis</h3>
+                        <p>Understand the emotional tone of your text</p>
+                    </div>
+
+                </div>
+
+                <textarea
+                    id="textInput"
+                    placeholder="Type or paste your message here..."
+                ></textarea>
+
+                <div class="text-bottom">
+
+                    <span id="characterCount">
+                        0 characters
+                    </span>
+
+                    <button class="analyze-btn" onclick="analyzeText()">
+                        Analyze Text →
+                    </button>
+
+                </div>
+
+                <!-- TEXT RESULT -->
+
+                <div class="result-box" id="textResult">
+
+                    <div class="result-top">
+
+                        <span class="result-label">
+                            SENTIMENT RESULT
+                        </span>
+
+                        <span class="confidence" id="textConfidence">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="result-main">
+
+                        <div class="result-emoji" id="textEmoji">
+                            —
+                        </div>
+
+                        <div>
+                            <small>Detected Sentiment</small>
+                            <h3 id="sentimentText">
+                                Waiting for analysis
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <div class="confidence-bar">
+                        <span id="textProgress"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SPEECH ANALYSIS -->
+            <div class="analyzer-card">
+
+                <div class="analyzer-title">
+
+                    <div class="analyzer-icon voice-icon">
+                        🎙
+                    </div>
+
+                    <div>
+                        <h3>Speech Emotion Analysis</h3>
+                        <p>Detect emotions from your voice</p>
+                    </div>
+
+                </div>
+
+
+                <div class="upload-area" id="uploadArea">
+
+                    <div class="upload-icon">
+                        🎧
+                    </div>
+
+                    <h3>Upload an Audio File</h3>
+
+                    <p>
+                        MP3, WAV or M4A files supported
+                    </p>
+
+                    <label class="upload-btn">
+                        Choose Audio
+                        <input
+                            type="file"
+                            id="audioFile"
+                            accept="audio/*"
+                            hidden
+                        >
+                    </label>
+
+                    <span id="fileName">
+                        No file selected
+                    </span>
+
+                </div>
+
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+
+                <button
+                    class="record-btn"
+                    id="recordButton"
+                    onclick="toggleRecording()"
+                >
+                    <span>●</span>
+                    Start Voice Recording
+                </button>
+
+
+                <!-- SPEECH RESULT -->
+
+                <div class="result-box speech-result" id="speechResult">
+
+                    <div class="result-top">
+
+                        <span class="result-label">
+                            EMOTION RESULT
+                        </span>
+
+                        <span class="confidence" id="speechConfidence">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="result-main">
+
+                        <div class="result-emoji" id="speechEmoji">
+                            —
+                        </div>
+
+                        <div>
+                            <small>Detected Emotion</small>
+
+                            <h3 id="emotionText">
+                                Waiting for analysis
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <div class="confidence-bar">
+                        <span id="speechProgress"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                PLATFORM FEATURES
+            </div>
+
+            <h2>
+                Powerful Emotion
+                <span>Intelligence</span>
+            </h2>
+
+            <p>
+                Designed to make emotional analysis simple, visual and
+                meaningful.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🧠</div>
+
+                <h3>AI Sentiment Detection</h3>
+
+                <p>
+                    Identify positive, negative and neutral sentiment
+                    from written communication.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🎤</div>
+
+                <h3>Speech Emotion Recognition</h3>
+
+                <p>
+                    Analyze vocal patterns to identify emotional states
+                    from speech.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">📊</div>
+
+                <h3>Visual Insights</h3>
+
+                <p>
+                    View confidence scores and emotion results through
+                    beautiful visual indicators.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>Fast Analysis</h3>
+
+                <p>
+                    Get quick results through a simple and responsive
+                    analysis interface.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EMOTIONS -->
+    <section class="emotion-section">
+
+        <div class="emotion-content">
+
+            <div class="section-label">
+                EMOTION LIBRARY
+            </div>
+
+            <h2>
+                Recognize the
+                <span>Human Spectrum</span>
+            </h2>
+
+            <p>
+                Our emotion analysis interface can be extended to identify
+                a wide range of human emotional states.
+            </p>
+
+        </div>
+
+
+        <div class="emotion-grid">
+
+            <div class="emotion-pill">😊 Happy</div>
+            <div class="emotion-pill">😢 Sad</div>
+            <div class="emotion-pill">😡 Angry</div>
+            <div class="emotion-pill">😨 Fear</div>
+            <div class="emotion-pill">😲 Surprise</div>
+            <div class="emotion-pill">😐 Neutral</div>
+            <div class="emotion-pill">🤢 Disgust</div>
+            <div class="emotion-pill">❤️ Love</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+
+        <div class="about-card">
+
+            <div class="about-icon">
+                ✨
+            </div>
+
+            <div>
+
+                <div class="section-label">
+                    ABOUT SENTIOAI
+                </div>
+
+                <h2>
+                    Turning Communication
+                    Into <span>Insights</span>
+                </h2>
+
+                <p>
+                    SentioAI combines text sentiment analysis and speech
+                    emotion recognition into one simple platform. It can
+                    be extended with machine learning models, natural
+                    language processing and speech recognition technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            <div class="logo-icon">S</div>
+            <strong>SentioAI</strong>
+        </div>
+
+        <p>
+            Text Sentiment & Speech Emotion Analysis System
+        </p>
+
+        <span>
+            © 2026 SentioAI. All rights reserved.
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
